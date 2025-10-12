@@ -1,0 +1,22 @@
+- defaults:
+    link:
+      if: '[ "$(uname -s)" = "Linux" ]'
+- link:
+    ~/.profile: .profile
+    ~/.config/hypr: hypr
+    ~/.config/waybar: waybar
+    ~/.config/wofi: wofi
+    ~/.config/alacritty: alacritty
+    ~/.config/nvim: nvim
+
+- defaults:
+    link:
+      if: '[ -e /etc/NIXOS ]'
+    shell:
+      if: '[ -e /etc/NIXOS ]'
+# - shell:
+#   - sudo cp -r ./nixos /etc/nixos
+- link:
+    ./.git/hooks/pre-commit: nixos-pre-commit
+
+# TODO Windows

@@ -1,0 +1,16 @@
+window {
+		font-family: "Geist Mono";
+		color: lightgrey;
+		background-color: black;
+}
+
+#outer-box {
+		margin: 16px;
+}
+
+#input {
+		border: none;
+		background-color: black;
+		color: lightgrey;
+}
+

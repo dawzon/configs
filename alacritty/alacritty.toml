@@ -1,0 +1,18 @@
+[general]
+import = [
+	"~/.config/alacritty/moonfly.toml"
+]
+
+[terminal]
+shell = "fish"
+
+[window]
+padding = { x = 16, y = 16 }
+opacity = 0.96
+
+[font]
+size = 14
+normal = { family = "Geist Mono" }
+
+[mouse]
+hide_when_typing = true 

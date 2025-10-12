@@ -1,0 +1,25 @@
+exec < /dev/tty
+
+if ! diff -r ./nixos /etc/nixos; then
+	echo "┌───────────────────────────────────────────────┐"
+	echo "│ ! System and repo configurations do not match │"
+	echo "└───────────────────────────────────────────────┘"
+	echo "1. Abort"
+	echo "2. Use system version (/etc/nixos/*) - Modified $(stat -c '%y' /etc/nixos)"
+	echo "3. Use repo version (git) - Modified $(stat -c '%y' ./nixos)"
+
+	read option
+
+	if [ "$option" = '2' ]; then
+		cp -r -v /etc/nixos/* ./nixos
+		exit 0
+	fi
+
+	if [ "$option" = '3' ]; then
+		echo 'Attempting to copy to /etc/nixos with sudo...'
+		sudo cp -r -v ./nixos/* /etc/nixos
+		exit 0
+	fi
+
+	exit 1
+fi
