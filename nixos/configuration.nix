@@ -5,63 +5,43 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ./network-booting.nix
-    ];
+  imports = [ # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    ./network-booting.nix
+  ];
 
   # Bootloader.
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot = {
     enable = true;
-    configurationLimit = 10;
+    configurationLimit = 5;
     consoleMode = "max";
     windows = {
-      "10" = {
-	 title = "Windows 10";
-	 efiDeviceHandle = "HD0c";
-	 sortKey = "0";
+      "11" = {
+        title = "Windows 11";
+        efiDeviceHandle = "HD0c";
+        sortKey = "0";
       };
     };
     edk2-uefi-shell.enable = true;
     memtest86.enable = true;
   };
 
-  # boot.plymouth = {
-  #   enable = true;
-  #   theme = "details";
-  # };
-
-  boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_17;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   networking.hostName = "impetus-nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Enable networking
   networking.networkmanager.enable = true;
-  hardware.bluetooth.powerOnBoot = false;
+  hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = true;
 
   # Set your time zone.
   time.timeZone = "America/Chicago";
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
-
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "en_US.UTF-8";
-    LC_IDENTIFICATION = "en_US.UTF-8";
-    LC_MEASUREMENT = "en_US.UTF-8";
-    LC_MONETARY = "en_US.UTF-8";
-    LC_NAME = "en_US.UTF-8";
-    LC_NUMERIC = "en_US.UTF-8";
-    LC_PAPER = "en_US.UTF-8";
-    LC_TELEPHONE = "en_US.UTF-8";
-    LC_TIME = "en_US.UTF-8";
-  };
-
-  # services.getty.greetingLine = "NixOS, btw";
-  services.getty.greetingLine = builtins.readFile ./greetingLine;
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -74,14 +54,11 @@
     isNormalUser = true;
     description = "Dawson Coleman";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [];
+    packages = with pkgs; [ ];
   };
 
-  # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
   environment.systemPackages = with pkgs; [
     #Development Tools
     neovim
@@ -95,7 +72,7 @@
     fzf
     fd
     wget
-    python3Full
+    python314
     nodejs_22
     unzip
     fish
@@ -104,6 +81,7 @@
     #podman-desktop
     clang
     cmake
+    nixfmt
 
     #Utility
     ffmpeg
@@ -136,15 +114,13 @@
     pavucontrol
     google-chrome
     discord
-    audacity
     vlc
     reaper
-    davinci-resolve
+    #davinci-resolve
     blender
     handbrake
     spotify
     pinta
-    krita
     libreoffice
     kdePackages.filelight
     boatswain
@@ -162,9 +138,7 @@
 
   nixpkgs.config = {
     packageOverrides = super: {
-      mplayer = super.mplayer.override {
-      	v4lSupport = true;
-      };
+      mplayer = super.mplayer.override { v4lSupport = true; };
     };
   };
 
@@ -173,52 +147,46 @@
       enable = true;
       withUWSM = true;
     };
-    hyprlock = {
-    	enable = true;
-    };
+    hyprlock = { enable = true; };
     _1password.enable = true;
     _1password-gui = {
       enable = true;
       #not sure if this is needed but it was on the nixos wiki
       #https://wiki.nixos.org/wiki/1Password
-      polkitPolicyOwners = ["dawson"];
+      polkitPolicyOwners = [ "dawson" ];
     };
     steam.enable = true;
-    nix-ld.enable = true; 
+    nix-ld.enable = true;
     xwayland.enable = true;
     obs-studio = {
-    	enable = true;
-	enableVirtualCamera = true;
-	plugins = with pkgs.obs-studio-plugins; [
-		wlrobs
-		obs-backgroundremoval
-		obs-vkcapture
-	];
-    };
-    appimage = {
       enable = true;
+      enableVirtualCamera = true;
+      plugins = with pkgs.obs-studio-plugins; [
+        wlrobs
+        obs-backgroundremoval
+        obs-vkcapture
+      ];
     };
+    appimage = { enable = true; };
   };
 
-  fonts.packages = with pkgs; [
-    geist-font
-    monaspace
-    font-awesome
-  ];
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
+  fonts.packages = with pkgs; [ geist-font monaspace font-awesome ];
 
   xdg.portal.xdgOpenUsePortal = true;
 
-  # List services that you want to enable:
+  # Dark mode
+  programs.dconf = {
+    enable = true;
+    profiles.user.databases = [{
+      settings = {
+        "org/gnome/desktop/interface" = {
+          color-scheme = "prefer-dark";
+          gtk-theme = "Adwaita-dark";
+        };
+      };
+    }];
+  };
 
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -230,14 +198,9 @@
     #https://discourse.nixos.org/t/pipewire-host-not-found-and-is-inactive/41533
     #systemWide = true;
   };
+  services.blueman.enable = true;
 
-  #services.desktopManager.cosmic.enable = true;
-
-  services.hypridle = {
-    	enable = true;
-    };
-  #not working with hyprland uwsm for some reason (1.0.3)
-  #services.displayManager.ly.enable = true;
+  services.hypridle = { enable = true; };
 
   # services.greetd = {
   #   enable = true;
@@ -249,9 +212,13 @@
   #   };
   # };
 
-  #services.spotifyd.enable = true;
+  services.playerctld.enable = true;
 
-  #services.playerctld.enable = true;
+  nix.gc = {
+    automatic = true;
+    options = "--delete-older-than +5";
+  };
+  nix.settings = { experimental-features = [ "nix-command" ]; };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
