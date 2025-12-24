@@ -19,4 +19,9 @@
 - link:
     ./.git/hooks/pre-commit: nixos-pre-commit
 
-# TODO Windows
+# Windows
+- defaults:
+    link:
+      if: 'ver'
+- link:
+    ~/AppData/local/nvim: nvim
