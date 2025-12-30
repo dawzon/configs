@@ -155,6 +155,7 @@
       #https://wiki.nixos.org/wiki/1Password
       polkitPolicyOwners = [ "dawson" ];
     };
+    nm-applet.enable = true;
     steam.enable = true;
     nix-ld.enable = true;
     xwayland.enable = true;
