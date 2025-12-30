@@ -61,7 +61,6 @@
 
   environment.systemPackages = with pkgs; [
     #Development Tools
-    neovim
     tree-sitter
     git
     gcc
@@ -156,6 +155,10 @@
       polkitPolicyOwners = [ "dawson" ];
     };
     nm-applet.enable = true;
+    neovim = {
+      enable = true;
+      defaultEditor = true;
+    };
     steam.enable = true;
     nix-ld.enable = true;
     xwayland.enable = true;
