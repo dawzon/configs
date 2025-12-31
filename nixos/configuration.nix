@@ -62,7 +62,6 @@
   environment.systemPackages = with pkgs; [
     #Development Tools
     tree-sitter
-    git
     gcc
     cargo
     go
@@ -158,6 +157,10 @@
     neovim = {
       enable = true;
       defaultEditor = true;
+    };
+    git = {
+      enable = true;
+      config = { pull = { ff = "only"; }; };
     };
     steam.enable = true;
     nix-ld.enable = true;
