@@ -80,6 +80,7 @@
     clang
     cmake
     nixfmt
+    tldx
 
     #Utility
     ffmpeg
