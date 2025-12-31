@@ -23,7 +23,7 @@ return {
 				"lua_ls",
 				"nil_ls",
 				"rust_analyzer",
-				"systemd_ls",
+				"systemd_lsp",
 				"ts_ls",
 				"vimls",
 				"nixfmt",
