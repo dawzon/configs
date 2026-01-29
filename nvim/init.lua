@@ -45,6 +45,15 @@ vim.g.netrw_liststyle = 1 -- long
 vim.g.netrw_sizestyle = "h"
 vim.g.netrw_timefmt = "%-m-%-d-%Y %X"
 
+-- Diagnostics, LSP, code completion
+vim.diagnostic.config({
+	virtual_text = true,
+	severity_sort = true,
+	update_in_insert = true,
+})
+vim.opt.completeopt = { "menu", "menuone", "preview", "noinsert" }
+vim.keymap.set("i", "<c-space>", "<c-x><c-o>") -- omnifunc
+
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
