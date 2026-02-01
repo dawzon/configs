@@ -54,6 +54,8 @@ vim.diagnostic.config({
 vim.opt.completeopt = { "menu", "menuone", "preview", "noinsert" }
 vim.keymap.set("i", "<c-space>", "<c-x><c-o>") -- omnifunc
 
+require("statusline")
+
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
