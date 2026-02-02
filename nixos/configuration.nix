@@ -7,7 +7,7 @@
 {
   imports = [ # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    ./network-booting.nix
+    # ./network-booting.nix
   ];
 
   # Bootloader.
@@ -81,6 +81,9 @@
     cmake
     nixfmt
     tldx
+    twitch-cli
+    jq
+    zstd
 
     #Utility
     ffmpeg
@@ -107,6 +110,7 @@
     blueman
     mplayer
     v4l-utils
+    kooha
 
     #Desktop apps
     alacritty
