@@ -31,23 +31,6 @@ return {
 		},
 	},
 	{
-		"mason-org/mason-lspconfig.nvim",
-		opts = {},
-		dependencies = {
-			{ "mason-org/mason.nvim", opts = {} },
-			"neovim/nvim-lspconfig",
-		},
-	},
-	{
-		"stevearc/conform.nvim",
-		opts = {
-			format_on_save = {
-				timeout_ms = 3000,
-				lsp_format = "fallback",
-			},
-		},
-	},
-	{
 		"folke/lazydev.nvim",
 		ft = "lua", -- only load on lua files
 		opts = {
@@ -55,6 +38,27 @@ return {
 				-- See the configuration section for more details
 				-- Load luvit types when the `vim.uv` word is found
 				{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
+			},
+		},
+	},
+	{
+		"mason-org/mason-lspconfig.nvim",
+		opts = {},
+		dependencies = {
+			{ "mason-org/mason.nvim", opts = {} },
+			"neovim/nvim-lspconfig",
+		},
+		config = function()
+			require("lazydev").setup({})
+			require("mason-lspconfig").setup()
+		end,
+	},
+	{
+		"stevearc/conform.nvim",
+		opts = {
+			format_on_save = {
+				timeout_ms = 3000,
+				lsp_format = "fallback",
 			},
 		},
 	},
