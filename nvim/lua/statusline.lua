@@ -36,4 +36,4 @@ function ModeName()
 end
 
 vim.opt.statusline =
-"%#TermCursor# %{%luaeval('ModeName()')%} %#StatusLine# %f %m%r%h%w%q %= %#TermCursor# %l/%L (%c) %y "
+	"%#TermCursor# %{%luaeval('ModeName()')%} %#StatusLine# %f %m%r%h%w%q %= %#TermCursor# %l/%L (%c) %y "
