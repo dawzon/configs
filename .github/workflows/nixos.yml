@@ -1,0 +1,16 @@
+name: NixOS checks
+on: [push]
+# on:
+#   push:
+#     paths:
+#       - 'nixos/**'
+#   pull_request:
+#     paths:
+#       - 'nixos/**'
+jobs:
+  nix:
+    runs-on: ubuntu-latest
+    container: nixos/nix:latest
+    steps:
+      - name: nixfmt
+        run: nix-shell -p nixfmt-tree --command "treefmt --ci"
