@@ -1,5 +1,11 @@
 name: Neovim checks
-on: [push, pull_request]
+on:
+  push:
+    paths:
+      - 'nvim/**'
+  pull_request:
+    paths:
+      - 'nvim/**'
 jobs:
   stylua:
     runs-on: ubuntu-latest
