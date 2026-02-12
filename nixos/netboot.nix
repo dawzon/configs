@@ -1,4 +1,9 @@
-{ pkgs, modulesPath, lib, ... }:
+{
+  pkgs,
+  modulesPath,
+  lib,
+  ...
+}:
 
 {
   imports = [
@@ -10,15 +15,15 @@
   networking.hostName = "client-node";
 
   console = {
-  	packages = [pkgs.terminus_font];
-	font = "ter-v32b";
+    packages = [ pkgs.terminus_font ];
+    font = "ter-v32b";
   };
-  
+
   # Add your custom packages
-  environment.systemPackages = with pkgs; [ 
-    git 
-    neovim 
-    htop 
+  environment.systemPackages = with pkgs; [
+    git
+    neovim
+    htop
     fastfetch
   ];
 
@@ -34,5 +39,5 @@
   services.getty.autologinUser = lib.mkForce "root";
 
   # This is required for NixOS configurations
-  system.stateVersion = "25.11"; 
+  system.stateVersion = "25.11";
 }

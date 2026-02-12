@@ -1,0 +1,19 @@
+name: Neovim checks
+on:
+  push:
+    paths:
+      - 'nvim/**'
+  pull_request:
+    paths:
+      - 'nvim/**'
+jobs:
+  stylua:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: JohnnyMorganz/stylua-action@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          version: latest
+          args: --check .
+
