@@ -16,3 +16,5 @@ jobs:
           nix_path: nixpkgs=channel:nixos-25.11
       - name: nixfmt
         run: nix-shell -p nixfmt-tree --command "treefmt --ci nixos"
+      - name: nix build
+        run: nix-build '<nixpkgs/nixos>' -I nixos-config=./nixos/configuration.nix --dry-run
