@@ -1,4 +1,9 @@
-{ pkgs, modulesPath, lib, ... }:
+{
+  pkgs,
+  modulesPath,
+  lib,
+  ...
+}:
 
 {
   imports = [
@@ -32,7 +37,11 @@
     fsType = "ext4";
   };
 
-  environment.systemPackages = with pkgs; [ neovim htop fastfetch ];
+  environment.systemPackages = with pkgs; [
+    neovim
+    htop
+    fastfetch
+  ];
 
   # TODO fix issue with steam library?
   xdg.portal = {

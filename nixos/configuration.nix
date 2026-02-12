@@ -5,7 +5,8 @@
 { config, pkgs, ... }:
 
 {
-  imports = [ # Include the results of the hardware scan.
+  imports = [
+    # Include the results of the hardware scan.
     ./hardware-configuration.nix
     # ./network-booting.nix
   ];
@@ -53,7 +54,10 @@
   users.users.dawson = {
     isNormalUser = true;
     description = "Dawson Coleman";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
     packages = with pkgs; [ ];
   };
 
@@ -150,7 +154,9 @@
       enable = true;
       withUWSM = true;
     };
-    hyprlock = { enable = true; };
+    hyprlock = {
+      enable = true;
+    };
     _1password.enable = true;
     _1password-gui = {
       enable = true;
@@ -165,7 +171,11 @@
     };
     git = {
       enable = true;
-      config = { pull = { ff = "only"; }; };
+      config = {
+        pull = {
+          ff = "only";
+        };
+      };
     };
     steam.enable = true;
     nix-ld.enable = true;
@@ -179,24 +189,32 @@
         obs-vkcapture
       ];
     };
-    appimage = { enable = true; };
+    appimage = {
+      enable = true;
+    };
   };
 
-  fonts.packages = with pkgs; [ geist-font monaspace font-awesome ];
+  fonts.packages = with pkgs; [
+    geist-font
+    monaspace
+    font-awesome
+  ];
 
   xdg.portal.xdgOpenUsePortal = true;
 
   # Dark mode
   programs.dconf = {
     enable = true;
-    profiles.user.databases = [{
-      settings = {
-        "org/gnome/desktop/interface" = {
-          color-scheme = "prefer-dark";
-          gtk-theme = "Adwaita-dark";
+    profiles.user.databases = [
+      {
+        settings = {
+          "org/gnome/desktop/interface" = {
+            color-scheme = "prefer-dark";
+            gtk-theme = "Adwaita-dark";
+          };
         };
-      };
-    }];
+      }
+    ];
   };
 
   security.rtkit.enable = true;
@@ -212,7 +230,9 @@
   };
   services.blueman.enable = true;
 
-  services.hypridle = { enable = true; };
+  services.hypridle = {
+    enable = true;
+  };
 
   # services.greetd = {
   #   enable = true;
@@ -230,7 +250,9 @@
     automatic = true;
     options = "--delete-older-than +5";
   };
-  nix.settings = { experimental-features = [ "nix-command" ]; };
+  nix.settings = {
+    experimental-features = [ "nix-command" ];
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
