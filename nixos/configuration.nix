@@ -251,6 +251,8 @@
     };
   };
 
+  hardware.wooting.enable = true;
+
   nix.gc = {
     automatic = true;
     options = "--delete-older-than +5";
