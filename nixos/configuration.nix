@@ -79,8 +79,6 @@
     unzip
     fish
     powershell
-    podman
-    #podman-desktop
     clang
     cmake
     nixfmt
@@ -88,6 +86,7 @@
     twitch-cli
     jq
     zstd
+    podman-desktop
 
     #Utility
     ffmpeg
@@ -245,6 +244,12 @@
   # };
 
   services.playerctld.enable = true;
+
+  virtualisation = {
+    podman = {
+      enable = true;
+    };
+  };
 
   nix.gc = {
     automatic = true;
