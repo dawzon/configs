@@ -28,6 +28,9 @@
     memtest86.enable = true;
   };
 
+  # Set the hardware clock in local time (matches what Windows does)
+  time.hardwareClockInLocalTime = true;
+
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   networking.hostName = "impetus-nixos"; # Define your hostname.
