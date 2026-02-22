@@ -106,6 +106,7 @@
     #Desktop
     wofi
     waybar
+    ashell
     hyprpaper
     hackneyed
     wl-clipboard

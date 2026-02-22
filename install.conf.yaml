@@ -5,6 +5,7 @@
     ~/.profile: .profile
     ~/.config/hypr: hypr
     ~/.config/waybar: waybar
+    ~/.config/ashell: ashell
     ~/.config/wofi: wofi
     ~/.config/alacritty: alacritty
     ~/.config/nvim: nvim

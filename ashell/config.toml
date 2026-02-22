@@ -1,0 +1,31 @@
+position = "Bottom"
+
+[modules]
+left = [ "Workspaces", "WindowTitle" ]
+right = [ "MediaPlayer", "Tray", "SystemInfo", [ "Clock", "Privacy", "Settings" ] ]
+
+[workspaces]
+visibility_mode = "MonitorSpecific"
+
+[system_info]
+indicators = [ "Cpu", "Memory", "DownloadSpeed", "UploadSpeed" ]
+
+[clock]
+format = "%B %d, %Y - %-l:%M:%S %p"
+
+[settings]
+indicators = [ "PeripheralBattery", "Bluetooth", "Network", "Audio" ]
+remove_airplane_btn = true
+remove_idle_btn = true
+
+[appearance]
+font_name = "Geist Mono"
+scale_factor = 1
+# style = "Island"
+workspace_colors = [ "#bbbbbb", "#bbbbbb" ]
+
+[appearance.background_color]
+base = "#000000"
+
+[appearance.text_color]
+base = "#bbbbbb"
