@@ -108,6 +108,7 @@
     waybar
     ashell
     hyprpaper
+    hyprpolkitagent
     hackneyed
     wl-clipboard
     grim
