@@ -79,7 +79,7 @@
     fd
     wget
     python314
-    nodejs_22
+    nodejs_latest
     unzip
     fish
     powershell
