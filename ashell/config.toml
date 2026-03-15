@@ -1,7 +1,7 @@
 position = "Bottom"
 
 [modules]
-left = [ "Workspaces", "WindowTitle" ]
+left = [ "Workspaces", "KeyboardSubmap", "WindowTitle" ]
 right = [ "MediaPlayer", "Tray", "SystemInfo", [ "Clock", "Privacy", "Settings" ] ]
 
 [workspaces]
