@@ -116,6 +116,8 @@
     slurp
     emote
     kdePackages.dolphin
+    kdePackages.dolphin-plugins
+    kdePackages.ark
     blueman
     mplayer
     v4l-utils
