@@ -4,6 +4,11 @@
 
 { config, pkgs, ... }:
 
+let
+  unstable = import <unstable> {
+    config = { allowUnfree = true; };
+  };
+in
 {
   imports = [
     # Include the results of the hardware scan.
@@ -67,6 +72,12 @@
 
   nixpkgs.config.allowUnfree = true;
 
+  nixpkgs.overlays = [
+    (final: prev: {
+      unstable = unstable;
+    })
+  ];
+
   environment.systemPackages = with pkgs; [
     #Development Tools
     tree-sitter
@@ -91,6 +102,7 @@
     jq
     zstd
     podman-desktop
+    unstable.neovim
 
     #Utility
     ffmpeg
@@ -172,10 +184,10 @@
       polkitPolicyOwners = [ "dawson" ];
     };
     nm-applet.enable = true;
-    neovim = {
-      enable = true;
-      defaultEditor = true;
-    };
+    # neovim = {
+    #   enable = true;
+    #   defaultEditor = true;
+    # };
     git = {
       enable = true;
       config = {
