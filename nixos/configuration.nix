@@ -85,6 +85,7 @@ in
     cargo
     go
     gnumake
+    nil
     ripgrep
     fzf
     fd

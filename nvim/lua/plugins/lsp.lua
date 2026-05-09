@@ -21,7 +21,6 @@ return {
 				"jdtls",
 				"kotlin_lsp",
 				"lua_ls",
-				"nil_ls",
 				"rust_analyzer",
 				"systemd_lsp",
 				"ts_ls",
@@ -51,6 +50,11 @@ return {
 		config = function()
 			require("lazydev").setup({})
 			require("mason-lspconfig").setup()
+
+			local is_nixos = vim.fn.filereadable("/etc/NIXOS") == 1
+			if is_nixos then
+				vim.lsp.enable("nil_ls")
+			end
 		end,
 	},
 	{
