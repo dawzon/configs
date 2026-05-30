@@ -108,7 +108,7 @@ in
     #Utility
     ffmpeg
     yt-dlp
-    xorg.xlsclients
+    xlsclients
 
     #Terminal bling
     fastfetch
@@ -157,7 +157,7 @@ in
     easyeffects
 
     #Wine
-    wineWowPackages.full
+    wineWow64Packages.full
 
     #Fun
     prismlauncher
