@@ -103,7 +103,6 @@ in
     jq
     zstd
     podman-desktop
-    unstable.neovim
 
     #Utility
     ffmpeg
@@ -185,10 +184,11 @@ in
       polkitPolicyOwners = [ "dawson" ];
     };
     nm-applet.enable = true;
-    # neovim = {
-    #   enable = true;
-    #   defaultEditor = true;
-    # };
+    neovim = {
+      enable = true;
+      defaultEditor = true;
+      package = unstable.pkgs.neovim-unwrapped;
+    };
     git = {
       enable = true;
       config = {
