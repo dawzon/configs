@@ -8,7 +8,10 @@ right = [ "MediaPlayer", "Tray", "SystemInfo", [ "Clock", "Privacy", "Settings" 
 visibility_mode = "MonitorSpecific"
 
 [system_info]
-indicators = [ "Cpu", "Memory", "DownloadSpeed", "UploadSpeed" ]
+indicators = [ "Cpu", "Memory", "DownloadSpeed", "UploadSpeed", "Temperature" ]
+
+[system_info.temperature]
+sensor = "k10temp Tctl"
 
 [clock]
 format = "%B %d, %Y - %-l:%M:%S %p"
