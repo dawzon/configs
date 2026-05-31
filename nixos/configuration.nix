@@ -254,6 +254,10 @@ in
     enable = true;
   };
 
+  services.udisks2 = {
+    enable = true;
+  };
+
   # services.greetd = {
   #   enable = true;
   #   settings = {
