@@ -95,6 +95,7 @@ hl.bind(mainMod .. "+ V", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. "+ D", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. "+ P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. "+ J", hl.dsp.layout("togglesplit")) -- dwindle only
+hl.bind(mainMod .. "+ SHIFT + S", hl.dsp.exec_cmd("grim -g \"$(slurp -d)\" - | wl-copy"))
 
 local directions = {
 	{ direction = "left",  vimKey = "h" },
