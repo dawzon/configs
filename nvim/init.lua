@@ -31,6 +31,17 @@ vim.keymap.set("n", "<c-l>", "<c-w><c-l>", { desc = "move focus to the right win
 vim.keymap.set("n", "<c-j>", "<c-w><c-j>", { desc = "move focus to the lower window" })
 vim.keymap.set("n", "<c-k>", "<c-w><c-k>", { desc = "move focus to the upper window" })
 
+-- Split manipulation
+vim.keymap.set("n", "<c-left>", ":vertical resize +2<CR>")
+vim.keymap.set("n", "<c-right>", ":vertical resize -2<CR>")
+vim.keymap.set("n", "<c-up>", ":resize +2<CR>")
+vim.keymap.set("n", "<c-down>", ":resize -2<CR>")
+
+vim.keymap.set("n", "<c-s-h>", "<c-w>H")
+vim.keymap.set("n", "<c-s-l>", "<c-w>L")
+vim.keymap.set("n", "<c-s-k>", "<c-w>K")
+vim.keymap.set("n", "<c-s-j>", "<c-w>J")
+
 -- Enable repeat indents
 vim.keymap.set("v", ">", ">gv", { noremap = true })
 vim.keymap.set("v", "<", "<gv", { noremap = true })
