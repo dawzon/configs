@@ -42,6 +42,9 @@ vim.keymap.set("n", "<c-s-l>", "<c-w>L")
 vim.keymap.set("n", "<c-s-k>", "<c-w>K")
 vim.keymap.set("n", "<c-s-j>", "<c-w>J")
 
+-- Terminal
+vim.keymap.set("t", "<esc>", "<c-\\><c-n>")
+
 -- Enable repeat indents
 vim.keymap.set("v", ">", ">gv", { noremap = true })
 vim.keymap.set("v", "<", "<gv", { noremap = true })
