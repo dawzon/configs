@@ -12,6 +12,10 @@ ModeNames = {
 	i = "INSERT",
 	v = "VISUAL",
 	V = "VISUAL LINE",
+	c = "COMMAND",
+	t = "TERMINAL",
+	nt = "NORMAL (TERM)",
+	R = "REPLACE",
 }
 
 MaxNameLen = 0
